@@ -127,7 +127,7 @@ const PasswordGenerator = () => {
         <div className="lg:w-52">
           <Slider
             value={passLength}
-            max={20}
+            max={50}
             min={1}
             onChange={setPassLength}
           />
