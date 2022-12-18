@@ -1,11 +1,9 @@
 import "./App.css";
-import Home from "./components/Home/Home";
 import PasswordGenerator from "./components/PasswordGenerator/PasswordGenerator";
 
 function App() {
   return (
-    <div className="">
-      {/* <Home /> */}
+    <div className="App">
       <PasswordGenerator />
     </div>
   );

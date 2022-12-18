@@ -1,14 +1,12 @@
 /* Define some custom styles for the button and password display */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
 const PasswordGenerator = () => {
   const [password, setPassword] = useState("");
   const [passLength, setPassLength] = useState(8);
-
-  console.log("password-->", password);
 
   function generatePassword() {
     const lowerCase = "abcdefghijklmnopqrstuvwxyz";
@@ -33,42 +31,48 @@ const PasswordGenerator = () => {
 
   let passwordStrength;
 
-  if (passLength == 0) {
-    passwordStrength = <span>{""}</span>;
-  }
-  if (passLength >= 4) {
-    passwordStrength = (
-      <span className="rounded bg-red-400 p-2 text-white">VERY WEAK</span>
-    );
-  }
-  if (passLength >= 5) {
-    passwordStrength = (
-      <span className="rounded bg-red-400 p-2 text-white">WEAK</span>
-    );
-  }
-  if (passLength >= 8) {
-    passwordStrength = (
-      <span className="rounded bg-[#F1C80B] p-2 text-white">GOOD</span>
-    );
-  }
-  if (passLength >= 10) {
-    passwordStrength = (
-      <span className="rounded bg-[#43ed9c] p-2 text-white">STRONG</span>
-    );
-  }
   if (passLength >= 12) {
     passwordStrength = (
-      <span className="rounded bg-[#0070f6] p-2 text-white">VERY STRONG</span>
+      <span className="whitespace-nowrap rounded bg-[#0070f6] p-2 font-medium text-white">
+        VERY STRONG
+      </span>
     );
+  } else if (passLength >= 10) {
+    passwordStrength = (
+      <span className="rounded bg-[#43ed9c] p-2 font-medium text-white">
+        STRONG
+      </span>
+    );
+  } else if (passLength >= 8) {
+    passwordStrength = (
+      <span className="rounded bg-[#F1C80B] p-2 font-medium text-white">
+        GOOD
+      </span>
+    );
+  } else if (passLength >= 5) {
+    passwordStrength = (
+      <span className="rounded bg-red-400 p-2 font-medium text-white">
+        WEAK
+      </span>
+    );
+  } else if (passLength >= 1) {
+    passwordStrength = (
+      <span className="rounded bg-red-400 p-2 font-medium text-white">
+        VERY WEAK
+      </span>
+    );
+  } else {
+    passwordStrength = <span>{""}</span>;
   }
 
-  const handleCopyToClipboard = (password) => {
-    setPassword(password);
-    alert("saved", console.log("password---<", password));
+  const passwordRef = useRef(null);
+
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(passwordRef.current.innerText);
   };
 
   const Modal = (
-    <>
+    <div className="text-left">
       <input type="checkbox" id="my-modal-4" className="modal-toggle" />
       <label htmlFor="my-modal-4" className="modal cursor-pointer">
         <label className="modal-box relative" htmlFor="">
@@ -79,20 +83,18 @@ const PasswordGenerator = () => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">
-            Congratulations random Internet user!
-          </h3>
+          <h3 className="text-lg font-bold">Password copied to clipboard ✔️</h3>
           <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
+            To paste the password someplace else, press{" "}
+            <span className="font-medium">CTRL + V</span> on your keyboard.
           </p>
         </label>
       </label>
-    </>
+    </div>
   );
 
   return (
-    <div className="mt-20 text-center">
+    <div className="py-20 text-center">
       <div className="space-y-16 py-4">
         <h1 className="text-6xl font-extrabold">Random Password Generator</h1>
         <p className="text-lg font-medium">
@@ -100,33 +102,35 @@ const PasswordGenerator = () => {
         </p>
       </div>
 
-      <div className="mt-20 flex items-center justify-center space-x-4">
-        <p className="password">
-          {password} {passwordStrength}
-        </p>
-
-        {/* <label
+      <div className="mx-auto mt-20 w-fit items-center space-x-4 lg:flex">
+        <div className="flex w-fit items-center space-x-4 rounded-full border border-solid border-[#d4d2e6] p-4">
+          <p className="password" ref={passwordRef}>
+            {password}
+          </p>
+          <span>{passwordStrength}</span>
+        </div>
+        <label
           htmlFor="my-modal-4"
-          className="btn-info btn"
+          className="btn rounded-full border-none bg-[#0070f6] px-8 shadow-md hover:scale-110 hover:bg-[#0070f6]"
           onClick={handleCopyToClipboard}
         >
           Copy
-        </label> */}
+        </label>
 
-        <button
-          className="btn-info btn"
-          onClick={() => handleCopyToClipboard(password)}
-        >
-          Copy
-        </button>
+        {Modal}
       </div>
 
-      <div className="mt-8 flex items-center justify-center space-x-12">
+      <div className="mt-8 items-center justify-center space-y-4 lg:flex lg:space-y-0 lg:space-x-12">
         <p className="text-lg font-normal">
           Password length: <span className="font-medium">{passLength}</span>{" "}
         </p>
-        <div className="w-52">
-          <Slider value={passLength} max={20} onChange={setPassLength} />
+        <div className="lg:w-52">
+          <Slider
+            value={passLength}
+            max={20}
+            min={1}
+            onChange={setPassLength}
+          />
         </div>
       </div>
     </div>
