@@ -119,6 +119,30 @@ const PasswordGenerator = () => {
 
         {Modal}
       </div> */}
+      <section className="mx-auto w-full grid-cols-2 gap-4 sm:w-1/2 lg:grid">
+        <div className="">
+          <p>{passwordStrength}</p>
+          <p className="password overflow-hidden rounded-full border border-solid border-[#d4d2e6] p-3">
+            {password}
+          </p>
+
+          {/* <input
+            className="password rounded-full border border-solid border-[#d4d2e6]"
+            type="text "
+            value={password}
+          /> */}
+        </div>
+        <div>
+          <label
+            htmlFor="my-modal-4"
+            className="btn rounded-full border-none bg-[#0070f6] px-8 shadow-md hover:scale-110 hover:bg-[#0070f6]"
+            onClick={handleCopyToClipboard}
+          >
+            Copy
+          </label>
+          {Modal}
+        </div>
+      </section>
 
       <section className="mt-8 items-center justify-center space-y-4 px-8 lg:flex lg:space-y-0 lg:space-x-12">
         <p className="text-lg font-normal">
