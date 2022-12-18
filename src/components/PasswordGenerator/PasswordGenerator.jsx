@@ -102,9 +102,9 @@ const PasswordGenerator = () => {
         </p>
       </div>
 
-      <div className="mx-auto mt-20 w-fit items-center space-x-4 lg:flex">
-        <div className="flex w-fit items-center space-x-4 rounded-full border border-solid border-[#d4d2e6] p-4">
-          <p className="password" ref={passwordRef}>
+      <div className="mx-auto mt-20 w-fit items-center space-y-4 space-x-4 lg:flex lg:space-y-0">
+        <div className="flex w-fit items-center  space-x-4 rounded-full border border-solid border-[#d4d2e6] p-4">
+          <p className="password test " ref={passwordRef}>
             {password}
           </p>
           <span>{passwordStrength}</span>
