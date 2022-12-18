@@ -8,7 +8,7 @@ const PasswordGenerator = () => {
   const [password, setPassword] = useState("");
   const [passLength, setPassLength] = useState(8);
 
-  console.log("passLength-->", passLength);
+  console.log("password-->", password);
 
   function generatePassword() {
     const lowerCase = "abcdefghijklmnopqrstuvwxyz";
@@ -62,6 +62,35 @@ const PasswordGenerator = () => {
     );
   }
 
+  const handleCopyToClipboard = (password) => {
+    setPassword(password);
+    alert("saved", console.log("password---<", password));
+  };
+
+  const Modal = (
+    <>
+      <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+      <label htmlFor="my-modal-4" className="modal cursor-pointer">
+        <label className="modal-box relative" htmlFor="">
+          <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+          <label
+            htmlFor="my-modal-4"
+            className="btn-sm btn-circle btn absolute right-2 top-2"
+          >
+            ✕
+          </label>
+          <h3 className="text-lg font-bold">
+            Congratulations random Internet user!
+          </h3>
+          <p className="py-4">
+            You've been selected for a chance to get one year of subscription to
+            use Wikipedia for free!
+          </p>
+        </label>
+      </label>
+    </>
+  );
+
   return (
     <div className="mt-20 text-center">
       <div className="space-y-16 py-4">
@@ -75,9 +104,21 @@ const PasswordGenerator = () => {
         <p className="password">
           {password} {passwordStrength}
         </p>
-        <div>
-          <button className="button">Copy</button>
-        </div>
+
+        {/* <label
+          htmlFor="my-modal-4"
+          className="btn-info btn"
+          onClick={handleCopyToClipboard}
+        >
+          Copy
+        </label> */}
+
+        <button
+          className="btn-info btn"
+          onClick={() => handleCopyToClipboard(password)}
+        >
+          Copy
+        </button>
       </div>
 
       <div className="mt-8 flex items-center justify-center space-x-12">
