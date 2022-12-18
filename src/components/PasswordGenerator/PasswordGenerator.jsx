@@ -102,9 +102,9 @@ const PasswordGenerator = () => {
         </p>
       </div>
 
-      <div className="mx-auto mt-20 w-fit items-center space-y-4 space-x-4 lg:flex lg:space-y-0">
+      {/* <div className="mx-auto mt-20 w-fit items-center space-y-4 space-x-4 lg:flex lg:space-y-0">
         <div className="flex w-fit items-center  space-x-4 rounded-full border border-solid border-[#d4d2e6] p-4">
-          <p className="password test " ref={passwordRef}>
+          <p className="password test" ref={passwordRef}>
             {password}
           </p>
           <span>{passwordStrength}</span>
@@ -118,9 +118,9 @@ const PasswordGenerator = () => {
         </label>
 
         {Modal}
-      </div>
+      </div> */}
 
-      <div className="mt-8 items-center justify-center space-y-4 lg:flex lg:space-y-0 lg:space-x-12">
+      <section className="mt-8 items-center justify-center space-y-4 px-8 lg:flex lg:space-y-0 lg:space-x-12">
         <p className="text-lg font-normal">
           Password length: <span className="font-medium">{passLength}</span>{" "}
         </p>
@@ -132,7 +132,7 @@ const PasswordGenerator = () => {
             onChange={setPassLength}
           />
         </div>
-      </div>
+      </section>
     </div>
   );
 };
