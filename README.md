@@ -8,4 +8,4 @@ You can use a random password generator to create passwords for your various acc
 
 It's important to note that you should never share your passwords with anyone, and you should always make sure to use a different password for each of your accounts to further increase security.
 
-![alt preview](https://i.ibb.co/N3xDPNw/Random-Password-Generator.gif)
+![alt preview](https://i.ibb.co/bgJCz6v/Screenshot-12.png)
