@@ -77,19 +77,21 @@ const PasswordGenerator = () => {
 
   return (
     <div className="py-20 text-center">
-      <div className="space-y-16 py-4">
-        <h1 className="text-6xl font-extrabold">Random Password Generator</h1>
-        <p className="text-lg font-medium">
+      <div className="space-y-8 py-4 lg:space-y-16">
+        <h1 className="text-4xl font-extrabold lg:text-6xl">
+          Random Password Generator
+        </h1>
+        <p className="text-xl font-medium lg:text-lg">
           Create strong and secure passwords to keep your account safe online.
         </p>
       </div>
 
       {isSmallScreen ? (
-        <section className="mx-auto space-y-4">
+        <section className="mx-auto mt-8 space-y-4">
           <p>{passwordStrength}</p>
           <p
             ref={passwordRef}
-            className="password overflow-hidden rounded-full border border-solid border-[#d4d2e6] p-3"
+            className="password mx-4 overflow-hidden rounded-lg border border-solid border-[#d4d2e6] bg-white p-3"
           >
             {password}
           </p>
