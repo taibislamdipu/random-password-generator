@@ -1,4 +1,4 @@
-## Random Password Generator
+## Random Password Generator 🔑
 
 A random password generator is a tool that creates a strong and unique password for you to use when creating accounts or accessing sensitive information online. These passwords are often difficult for humans to remember, but are secure against dictionary attacks and other common forms of cyber attacks.
 
@@ -8,4 +8,4 @@ You can use a random password generator to create passwords for your various acc
 
 It's important to note that you should never share your passwords with anyone, and you should always make sure to use a different password for each of your accounts to further increase security.
 
-![alt preview](https://i.ibb.co/7v3vWdB/Random-Password-Generator-Adobe-Express.gif)
+![alt preview](https://i.ibb.co/N3xDPNw/Random-Password-Generator.gif)
