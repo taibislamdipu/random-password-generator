@@ -1,5 +1,5 @@
 import React from "react";
-
+import { BsFillCheckCircleFill } from "react-icons/bs";
 const ConfirmationModal = () => {
   return (
     <div className="text-left">
@@ -13,7 +13,10 @@ const ConfirmationModal = () => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">Password copied to clipboard ✔️</h3>
+          <h3 className="flex items-center gap-1 text-lg font-bold">
+            <BsFillCheckCircleFill color="green" size={20} />
+            Password copied to clipboard
+          </h3>
           <p className="py-4">
             To paste the password someplace else, press{" "}
             <span className="font-medium">CTRL + V</span> on your keyboard.

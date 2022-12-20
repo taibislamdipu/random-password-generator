@@ -1,14 +1,16 @@
 /* Define some custom styles for the button and password display */
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useMediaQuery } from "react-responsive";
 import ConfirmationModal from "./ConfirmationModal";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 const PasswordGenerator = () => {
   const [password, setPassword] = useState("");
   const [passLength, setPassLength] = useState(8);
+  const [copied, setCopied] = useState(false);
 
   const isSmallScreen = useMediaQuery({ query: "(max-width: 1224px)" });
 
@@ -69,16 +71,6 @@ const PasswordGenerator = () => {
     passwordStrength = <span>{""}</span>;
   }
 
-  const passwordRef = useRef(null);
-
-  const handleCopyToClipboard = () => {
-    try {
-      navigator.clipboard.writeText(passwordRef.current.innerText);
-    } catch (error) {
-      console.error("Failed to copy to clipboard: ", error);
-    }
-  };
-
   return (
     <div className="py-20 text-center">
       <div className="space-y-8 py-4 lg:space-y-16">
@@ -93,48 +85,37 @@ const PasswordGenerator = () => {
       {isSmallScreen ? (
         <section className="mx-auto mt-8 space-y-4">
           <p>{passwordStrength}</p>
-          <p
-            ref={passwordRef}
-            className="password mx-4 overflow-hidden rounded-lg border border-solid border-[#d4d2e6] bg-white p-3"
-          >
+          <p className="password mx-4 overflow-hidden rounded-lg border border-solid border-[#d4d2e6] bg-white p-3">
             {password}
           </p>
 
           <div>
-            <label
-              htmlFor="my-modal-4"
-              className="btn rounded-full border-none bg-[#0070f6] px-8 hover:scale-110 hover:bg-[#0070f6]"
-              onClick={handleCopyToClipboard}
-              style={{
-                boxShadow:
-                  "0 8px 32px -8px rgb(0 112 246 / 40%), 0 16px 32px -16px rgb(7 29 43 / 16%)",
-              }}
-            >
-              Copy mobile
-            </label>
+            <CopyToClipboard text={password} onCopy={() => setCopied(true)}>
+              <label
+                htmlFor="my-modal-4"
+                className="btn rounded-full border-none bg-[#0070f6] px-8 hover:scale-110 hover:bg-[#0070f6]"
+              >
+                COPY MOBILE
+              </label>
+            </CopyToClipboard>
             <ConfirmationModal />
           </div>
         </section>
       ) : (
         <section className="mx-auto mt-20 w-fit items-center space-y-4 space-x-4 lg:flex lg:space-y-0">
           <div className="flex w-fit items-center space-x-4 rounded-full border border-solid border-[#d4d2e6] bg-white p-4">
-            <p className="password " ref={passwordRef}>
-              {password}
-            </p>
+            <p className="password ">{password}</p>
             <span>{passwordStrength}</span>
           </div>
-          <label
-            htmlFor="my-modal-4"
-            className="btn rounded-full border-none bg-[#0070f6] px-8 hover:scale-110 hover:bg-[#0070f6]"
-            onClick={handleCopyToClipboard}
-            style={{
-              boxShadow:
-                "0 8px 32px -8px rgb(0 112 246 / 40%), 0 16px 32px -16px rgb(7 29 43 / 16%)",
-            }}
-          >
-            Copy web
-          </label>
 
+          <CopyToClipboard text={password} onCopy={() => setCopied(true)}>
+            <label
+              htmlFor="my-modal-4"
+              className="btn rounded-full border-none bg-[#0070f6] px-8 hover:scale-110 hover:bg-[#0070f6]"
+            >
+              COPY WEB
+            </label>
+          </CopyToClipboard>
           <ConfirmationModal />
         </section>
       )}
