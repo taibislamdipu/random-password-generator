@@ -70,7 +70,7 @@ const Footer = () => {
 
       <div className="grid-cols-3 space-y-8 lg:mx-40 lg:grid lg:gap-8 lg:space-y-0 lg:py-20">
         {passwordData.map((data) => (
-          <div className="space-y-4">
+          <div className="space-y-4" key={data?.id}>
             <div className="flex items-center justify-center">{data?.icon}</div>
             <h2 className="font text-xl font-bold" key={data?.id}>
               {data?.title}

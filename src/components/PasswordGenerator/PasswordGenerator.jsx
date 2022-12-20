@@ -73,6 +73,7 @@ const PasswordGenerator = () => {
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(passwordRef.current.innerText);
+    console.log("btn fired!");
   };
 
   return (
