@@ -72,14 +72,11 @@ const PasswordGenerator = () => {
   const passwordRef = useRef(null);
 
   const handleCopyToClipboard = () => {
-    navigator.clipboard
-      .writeText(passwordRef.current.innerText)
-      .then(() => {
-        console.log("successfully copied");
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    try {
+      navigator.clipboard.writeText(passwordRef.current.innerText);
+    } catch (error) {
+      console.error("Failed to copy to clipboard: ", error);
+    }
   };
 
   return (
@@ -115,6 +112,7 @@ const PasswordGenerator = () => {
             >
               Copy mobile
             </label>
+            <ConfirmationModal />
           </div>
         </section>
       ) : (
