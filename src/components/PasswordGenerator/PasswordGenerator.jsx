@@ -6,6 +6,7 @@ import "rc-slider/assets/index.css";
 import { useMediaQuery } from "react-responsive";
 import ConfirmationModal from "./ConfirmationModal";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { AiOutlineCopy } from "react-icons/ai";
 
 const PasswordGenerator = () => {
   const [password, setPassword] = useState("");
@@ -93,9 +94,9 @@ const PasswordGenerator = () => {
             <CopyToClipboard text={password} onCopy={() => setCopied(true)}>
               <label
                 htmlFor="my-modal-4"
-                className="btn rounded-full border-none bg-[#0070f6] px-8 hover:scale-110 hover:bg-[#0070f6]"
+                className="btn mx-auto flex w-fit gap-2 rounded-full border-none bg-[#0070f6] px-8 hover:scale-110 hover:bg-[#0070f6]"
               >
-                COPY MOBILE
+                COPY <AiOutlineCopy size={23} />
               </label>
             </CopyToClipboard>
             <ConfirmationModal />
@@ -111,9 +112,9 @@ const PasswordGenerator = () => {
           <CopyToClipboard text={password} onCopy={() => setCopied(true)}>
             <label
               htmlFor="my-modal-4"
-              className="btn rounded-full border-none bg-[#0070f6] px-8 hover:scale-110 hover:bg-[#0070f6]"
+              className="btn flex gap-2 rounded-full border-none bg-[#0070f6] px-8 hover:scale-110 hover:bg-[#0070f6]"
             >
-              COPY WEB
+              COPY <AiOutlineCopy size={23} />
             </label>
           </CopyToClipboard>
           <ConfirmationModal />
